@@ -1,0 +1,10 @@
+{
+  "name": "WebCore",
+  "version": "0.0.0",
+  "description": "WebCore",
+  "main": "server.js",
+  "author": {
+    "name": "mistree",
+    "email": ""
+  }
+}
