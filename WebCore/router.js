@@ -8,7 +8,8 @@ readFile = function (response, pathname) {
 			response.end();
 		}
 		else {
-			response.write(data);
+			response.writeHead(200, { 'content-type': 'text/html' });
+			response.write(data);			
 			response.end();
 		}
 	});

@@ -2,7 +2,7 @@
   "name": "WebCore",
   "version": "0.0.0",
   "description": "WebCore",
-  "main": "server.js",
+  "main": "index.js",
   "author": {
     "name": "mistree",
     "email": ""
