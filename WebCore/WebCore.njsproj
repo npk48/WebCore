@@ -40,6 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="site\" />
+    <Folder Include="site\css\" />
+    <Folder Include="site\images\" />
+    <Folder Include="site\photos\" />
     <Folder Include="site\scripts\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
