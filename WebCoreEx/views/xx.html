@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>XX俱乐部</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        .background {
+            background: url('../images/background_xx2.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .carousel-caption {
+            top: -20px;
+            bottom: auto;
+        }
+    </style>
+</head>
+<body class="background">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">XX俱乐部</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a onclick="showXXP()" href="#">入部申请</a></li>
+                    <li><a onclick="showMember()" href="#">部员简介</a></li>
+                    <li><a onclick="showAdventure()" href="#">大冒险</a></li>
+                    <li><a onclick="showGame()" href="#">游戏</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a onclick="showLogin()" href="#"><span class="glyphicon glyphicon-log-in"></span>登录</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div style="background:rgba(255, 255, 255, 0.5);" class="jumbotron">
+            <div class="row">
+                <div class="col-md-5">
+                    <h2 style="color:rgba(0,0,0,1.0);">XX俱乐部</h2>
+                    <p>令人闻风丧胆的XX俱乐部。</p>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+        //function btnclick() {
+        //    var obj = document.getElementById("btn1c");
+        //    var count = parseInt(obj.innerHTML);
+        //    obj.innerHTML = count + 1;
+        //
+        //    var pb = document.getElementById("pb");
+        //    pb.setAttribute("style", "width: " + count + "%");
+        //    pb.innerHTML = count + "%";
+        //}
+        //
+        //var w = new Worker("/scripts/worker.js");
+        //w.onmessage = function (event) {
+        //    var pb = document.getElementById("pb");
+        //    pb.setAttribute("style", "width: " + event.data + "%");
+        //    pb.innerHTML = event.data + "%";
+        //    if (event.data == 100)
+        //        w.terminate();
+        //}
+
+    </script>
+</body>
+</html>

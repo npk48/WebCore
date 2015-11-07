@@ -13,6 +13,10 @@
             background: url('../images/background.jpg') no-repeat center center fixed;
             background-size: cover;
         }
+        .carousel-caption {
+            top: -20px;
+            bottom: auto;
+        }
     </style>
 </head>
 <body class="background">
@@ -30,10 +34,10 @@
 
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a onclick="showBlog()" href="#">Developer Blog</a></li>
-                    <li><a onclick="showMinecraft()" href="#">Minecraft</a></li>
-                    <li><a onclick="showXXP()" href="#">XXP Tool</a></li>
-                    <li><a onclick="showBoard()" href="#">Board</a></li>
+                    <li><a href="#">Developer Blog</a></li>
+                    <li><a href="#">Minecraft</a></li>
+                    <li><a href="/xx">XX Club</a></li>
+                    <li><a href="#">Board</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a onclick="showLogin()" href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
@@ -53,37 +57,14 @@
                     <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 150px; height: 150px; margin: 0 auto">
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-                                <img src="\photos\DTYSKY.jpg" alt="大小姐">
-                            </div>
-
-                            <div class="item">
-                                <img src="\photos\KeyMove.jpg" alt="成成">
-                            </div>
-
-                            <div class="item">
-                                <img src="\photos\Jiangyou.jpg" alt="酱油">
-                            </div>
-
-                            <div class="item">
-                                <img src="\photos\FuGay.jpg" alt="富贵">
-                            </div>
-
-                            <div class="item">
-                                <img src="\photos\Z5.jpg" alt="战5">
-                            </div>
-
-                            <div class="item">
-                                <img src="\photos\xiongzhen.jpg" alt="胸针">
-                            </div>
-
-                            <div class="item">
-                                <img src="\photos\a.jpg" alt="青年A">
-                            </div>
-
-                            <div class="item">
-                                <img src="\photos\mao.jpg" alt="破毛">
-                            </div>
+                            {% for person in persons %}
+                              <div class="item {% if loop.first %}active{% endif %}">                              
+                                  <img src="\photos\{{person}}.jpg" alt="{{person}}">
+                                    <div class="carousel-caption">
+                                        <p>{{person}}</p>
+                                    </div>
+                              </div>
+                            {% endfor %}
                         </div>
 
                         <!-- Left and right controls -->
@@ -126,7 +107,7 @@
             <div class="col-md-4">
                 <div class="panel-group">
                     <div class="panel panel-default">
-                        <div class="panel-heading">XXP 动态</div>
+                        <div class="panel-heading">XX俱乐部 动态</div>
                         <div class="panel-body">Panel Content</div>
                     </div>
                     <div class="panel panel-default">
