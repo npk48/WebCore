@@ -8,4 +8,9 @@ router.get('/', function (req, res) {
 	res.render('home', model.data);
 });
 
+//router.post('/', function (req, res) {
+//	//req.xxx 获取post数据
+//	res.send('POST request to the homepage');
+//});
+
 module.exports = router;
