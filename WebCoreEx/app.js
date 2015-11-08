@@ -40,7 +40,7 @@ app.use(function (req, res, next) {
     }();
     var err = new Error();
     err.name = error_messages[index]["name"];
-    err.message = error_messages[index]["message"].join("<br>");
+    err.message = error_messages[index]["message"].join("<br />");
     err.status = 404;
     next(err);
 });

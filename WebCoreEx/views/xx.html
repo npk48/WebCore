@@ -8,18 +8,31 @@
     <title>XX俱乐部</title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.min.css?1" />
+    <script src="javascripts/CommentCoreLibrary.min.js"></script>
+    <script src="javascripts/ABPlayer.min.js"></script>
     <style>
-        .background {
-            background: url('../images/background_xx2.jpg') no-repeat center center fixed;
-            background-size: cover;
+        #backgrounds {
+            position: fixed;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            background-color: black;
         }
-        .carousel-caption {
-            top: -20px;
-            bottom: auto;
+        #backgrounds img.bgfade {
+            position: absolute;
+            top: 0;
+            display: none;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .transparent {
+            background: rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
-<body class="background">
+<body>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
 
@@ -47,15 +60,57 @@
     </nav>
 
     <div class="container">
-        <div style="background:rgba(255, 255, 255, 0.5);" class="jumbotron">
-            <div class="row">
-                <div class="col-md-5">
-                    <h2 style="color:rgba(0,0,0,1.0);">XX俱乐部</h2>
-                    <p>令人闻风丧胆的XX俱乐部。</p>
+        <div id="backgrounds">
+            <img class="bgfade" src="/images/background_xx0.jpg">
+            <img class="bgfade" src="/images/background_xx1.jpg">
+            <img class="bgfade" src="/images/background_xx2.jpg">
+            <img class="bgfade" src="/images/background_xx3.jpg">
+            <img class="bgfade" src="/images/background_xx4.jpg">
+            <img class="bgfade" src="/images/background_xx5.jpg">
+            <img class="bgfade" src="/images/background_xx6.jpg">
+        </div>
+        <div id="content">
+            <div style="background: rgba(255, 255, 255, 0.5);" class="jumbotron">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2 style="color: rgba(0,0,0,1.0);">XX俱乐部</h2>
+                        <p>令人闻风丧胆的XX俱乐部。(xx部简介 东方写一段吧)</p>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                    </div>
                 </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-3">
-
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel-group">
+                        <div class="panel panel-default transparent">
+                            <div class="panel-body">XXP 动态...（xxp爱好足迹动态相关内容）</div>
+                        </div>
+                        <div class="panel panel-default transparent">
+                            <div class="panel-body">Panel Content</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel-group">
+                        <div class="panel panel-default transparent">
+                            <div class="panel-body">大冒险 动态（视频缩略图)</div>
+                        </div>
+                        <div class="panel panel-default transparent">
+                            <div class="panel-body">Panel Content</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel-group">
+                        <div class="panel panel-default transparent">
+                            <div class="panel-body">游戏 动态(不清楚要放什么)</div>
+                        </div>
+                        <div class="panel panel-default transparent">
+                            <div class="panel-body">Panel Content</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -70,6 +125,21 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+
+        $(window).load(function () {
+            $('img.bgfade').hide();
+            var dg_H = $(window).height();
+            var dg_W = $(window).width();
+            $('#backgrounds').css({ 'height': dg_H, 'width': dg_W });
+            function anim() {
+                $("#backgrounds img.bgfade").first().appendTo('#backgrounds').fadeOut(1500);
+                $("#backgrounds img").first().fadeIn(1500);
+                setTimeout(anim, 6000);
+            }
+            anim();
+        })
+        $(window).resize(function () { window.location.href = window.location.href })
+
 
         //function btnclick() {
         //    var obj = document.getElementById("btn1c");
@@ -89,6 +159,46 @@
         //    if (event.data == 100)
         //        w.terminate();
         //}
+
+        function showAdventure() {
+            var obj = document.getElementById("content");
+            while (obj.firstChild) {
+                obj.removeChild(obj.firstChild);
+            }
+            //var player = document.createElement("video");
+            //player.width = "320";
+            //player.height = "240";
+            //player.controls = "controls";
+            //var source = document.createElement("source");
+            //source.src = "videos/臣风的大冒险.mp4";
+            //source.type = "video/mp4";
+            //player.appendChild(source);
+            //console.log(player);
+            //obj.appendChild(player);
+
+            var inst = ABP.create(obj, {
+                'src': "videos/臣风的大冒险.mp4",
+                'width': 800,
+                'height': 522
+            });
+            CommentLoader('somecommentfile.xml', inst.cmManager);
+            var startTime = Date.now();
+            inst.txtText.focus();
+            inst.txtText.addEventListener("keydown", function (e) {
+                if (e && e.keyCode === 13) {
+                    if (/^!/.test(this.value)) return; //Leave the internal commands
+                    var damaku = {
+                        "mode": 1,
+                        "text": inst.txtText.value,
+                        "stime": Date.now()-startTime,
+                        "size": 30,
+                        "color": 0xff0000
+                    };
+                    inst.cmManager.insert(damaku);
+                    inst.txtText.value = "";
+                }
+            });
+        }
 
     </script>
 </body>

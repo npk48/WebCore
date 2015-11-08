@@ -38,7 +38,6 @@
     <Compile Include="models\home.js" />
     <Compile Include="models\xx.js" />
     <Content Include="package.json" />
-    <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
     <Content Include="views\error.html" />
     <Content Include="views\home.html" />
