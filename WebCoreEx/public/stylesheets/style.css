@@ -5,3 +5,19 @@ body {
 a {
   color: #00b7ff;
 }
+#error{
+    width:60%;
+    margin-left: 20%;
+    margin-top: 5%;
+    text-align: center;
+}
+
+#error-title{
+    line-height: 3em;
+    font-size: 2.5em;
+}
+
+#error-message{
+    font-size: 1.4em;
+    line-height: 1.6em;
+}
