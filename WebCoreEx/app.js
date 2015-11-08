@@ -26,13 +26,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 
 app.use('/', home);
 app.use('/xx', xx);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
+    var error_messages = JSON.parse(require("fs").readFileSync("../controllers/error_messages.json"));
+    var index = function () {
+        if (Math.random() < 0.5) { return 0; }
+        else { return 1; }
+    }();
+    var err = new Error();
+    err.name = error_messages[index]["name"];
+    err.message = error_messages[index]["message"].join("<br>");
     err.status = 404;
     next(err);
 });
@@ -45,8 +53,8 @@ if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
+            name: err.name,
             message: err.message,
-            error: err
         });
     });
 }
